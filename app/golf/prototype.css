@@ -1,0 +1,24 @@
+.golf-page { min-height: 100svh; background: #112c23; color: #e3ecd9; padding: 24px 20px 32px; display: flex; align-items: center; flex-direction: column; font-family: monospace; }
+.golf-header { width: min(76svh, 680px, 100%); display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 18px; font-size: 16px; }
+.golf-header a { color: #bed8a7; text-decoration: none; }
+.golf-header small { display: block; color: #a5bfaa; font-size: 12px; margin-top: 4px; text-align: right; }
+.golf-frame { width: min(76svh, 680px, 100%); aspect-ratio: 1; border: 1px solid #4a7255; box-shadow: 0 16px 60px #071a2070; }
+.golf-mount, .golf-mount pocket-golf { display: block; width: 100%; height: 100%; }
+.golf-instructions { max-width: 570px; text-align: center; font-size: 14px; line-height: 1.7; margin: 20px 0 0; }
+.golf-caption { color: #a5bfaa; font-size: 12px; margin-top: 8px; }
+.golf-frame:fullscreen { border: 0; }
+.golf-player { display:flex; flex-direction:column; align-items:center; width:100%; color:#e3ecd9; font-family:monospace; }
+.golf-loading { position:absolute; inset:0; display:grid; place-content:center; background:#286945; color:#e3ecd9; }
+.golf-controls { width:min(680px,100%); margin-top:18px; }
+.golf-actions { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+.golf-controls button { background:#193f30; color:#e3ecd9; border:1px solid #789764; border-radius:4px; padding:10px 14px; font:14px monospace; cursor:pointer; }
+.golf-controls button:hover { background:#285a3e; }
+.golf-controls button:disabled { opacity:.5; cursor:default; }
+.golf-controls label { display:block; font-size:14px; margin-bottom:8px; }
+.golf-seed-row { display:flex; gap:8px; }
+.golf-controls input { min-width:0; width:100%; background:#193f30; border:1px solid #789764; color:#e3ecd9; padding:10px; font:14px monospace; border-radius:4px; }
+.golf-controls :focus-visible { outline:2px solid #f3cb73; outline-offset:3px; }
+.golf-controls .golf-caption { font-size:14px; line-height:1.6; margin:16px 0; }
+.golf-notice { font-size:14px; line-height:1.6; }
+.golf-lab-link { display:inline-block; color:#bed8a7; font-size:14px; margin-top:12px; }
+@media (max-width: 500px) { .golf-page { padding: 16px 10px; } .golf-header { font-size: 14px; } }

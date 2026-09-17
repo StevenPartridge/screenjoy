@@ -1,0 +1,51 @@
+{
+  "name": "@screenjoy/downhill-ski",
+  "version": "0.1.0",
+  "description": "A playful, pixel-crisp downhill skiing game web component.",
+  "type": "module",
+  "files": [
+    "dist",
+    "src",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "./dist/index.js"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./element": {
+      "types": "./dist/downhill-ski.d.ts",
+      "import": "./dist/downhill-ski.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepack": "npm run build",
+    "prepublishOnly": "node ../../scripts/release/publish-check.mjs"
+  },
+  "dependencies": {
+    "@screenjoy/runtime": "0.1.0"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-component",
+    "custom-element",
+    "screenjoy",
+    "canvas"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StevenPartridge/screenjoy.git",
+    "directory": "packages/downhill-ski"
+  },
+  "homepage": "https://github.com/StevenPartridge/screenjoy#readme",
+  "bugs": {
+    "url": "https://github.com/StevenPartridge/screenjoy/issues"
+  }
+}

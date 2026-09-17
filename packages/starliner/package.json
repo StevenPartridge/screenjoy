@@ -1,0 +1,55 @@
+{
+  "name": "@screenjoy/starliner",
+  "version": "0.1.0",
+  "description": "A seeded passenger window onto a drifting starfield, in cruise or FTL.",
+  "type": "module",
+  "files": [
+    "dist",
+    "src",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "./dist/index.js"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./element": {
+      "types": "./dist/starliner.d.ts",
+      "import": "./dist/starliner.js"
+    },
+    "./scene": {
+      "types": "./dist/scene.d.ts",
+      "import": "./dist/scene.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepack": "npm run build",
+    "prepublishOnly": "node ../../scripts/release/publish-check.mjs"
+  },
+  "dependencies": {
+    "@screenjoy/runtime": "0.1.0"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-component",
+    "custom-element",
+    "screenjoy",
+    "canvas"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StevenPartridge/screenjoy.git",
+    "directory": "packages/starliner"
+  },
+  "homepage": "https://github.com/StevenPartridge/screenjoy#readme",
+  "bugs": {
+    "url": "https://github.com/StevenPartridge/screenjoy/issues"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "name": "@screenjoy/fishtank",
+  "version": "0.1.0",
+  "description": "A calm Three.js aquarium screensaver with hand-editable GLB fish.",
+  "type": "module",
+  "files": [
+    "dist",
+    "src",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "./dist/index.js"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./element": {
+      "types": "./dist/fish-tank.d.ts",
+      "import": "./dist/fish-tank.js"
+    },
+    "./models/*": "./dist/models/*"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node scripts/copy-models.mjs",
+    "build:code": "tsc -p tsconfig.json",
+    "export:starter-models": "npm run build:code && node scripts/export-fish-models.mjs && node scripts/copy-models.mjs",
+    "prepack": "npm run build",
+    "prepublishOnly": "node ../../scripts/release/publish-check.mjs"
+  },
+  "dependencies": {
+    "@screenjoy/runtime": "0.1.0",
+    "three": "^0.185.1"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/three": "^0.185.1"
+  },
+  "keywords": [
+    "web-component",
+    "custom-element",
+    "screenjoy",
+    "canvas"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StevenPartridge/screenjoy.git",
+    "directory": "packages/fishtank"
+  },
+  "homepage": "https://github.com/StevenPartridge/screenjoy#readme",
+  "bugs": {
+    "url": "https://github.com/StevenPartridge/screenjoy/issues"
+  }
+}

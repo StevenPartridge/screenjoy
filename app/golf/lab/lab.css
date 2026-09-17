@@ -1,0 +1,55 @@
+.golf-lab { padding: 24px clamp(16px, 4vw, 56px) 48px; align-items: stretch; }
+.lab-header, .lab-layout, .lab-saved, .lab-notices, .lab-copy { width: 100%; max-width: 1160px; margin-inline: auto; }
+.lab-header { display:flex; justify-content:space-between; align-items:center; gap:20px; margin-bottom:24px; }
+.lab-header a { font-size:14px; color:#bed8a7; text-decoration:none; }
+.lab-header h1 { font:normal 26px monospace; margin:8px 0 0; letter-spacing:-1px; }
+.lab-layout { display:grid; grid-template-columns:minmax(0, 1fr) 360px; gap:28px; align-items:start; }
+.lab-play { position:sticky; top:20px; min-width:0; }
+.golf-lab .golf-frame { width:100%; max-height:none; }
+.lab-loading { position:absolute; inset:0; display:grid; place-items:center; background:#286945; color:#e3ecd9; font-size:15px; }
+.lab-navigation { display:flex; gap:8px; margin:14px 0; }
+.lab-navigation .lab-primary { margin-left:auto; }
+.golf-lab button:not(.fullscreen-button) { font:14px monospace; border:1px solid #54725a; color:#e3ecd9; background:#193f30; border-radius:4px; padding:10px 12px; cursor:pointer; }
+.golf-lab button:not(.fullscreen-button):hover { border-color:#b6d88a; background:#245338; }
+.golf-lab button:disabled { opacity:.4; cursor:default; }
+.golf-lab button.lab-primary, .golf-lab button[aria-pressed="true"] { background:#b9d68a; border-color:#b9d68a; color:#153323; }
+.golf-lab button.lab-primary:hover, .golf-lab button[aria-pressed="true"]:hover { background:#c8e499; }
+.golf-lab :is(button,input,select,textarea,a):focus-visible { outline:2px solid #edbd60; outline-offset:3px; }
+.lab-hole-info { display:grid; gap:8px; font-size:14px; line-height:1.5; }
+.golf-lab code { color:#b7cda7; font:12px monospace; overflow-wrap:anywhere; }
+.lab-route { display:flex; align-items:center; gap:8px; font-size:14px; margin:16px 0 0; }
+.golf-lab input[type="checkbox"] { accent-color:#b9d68a; width:16px; height:16px; flex-shrink:0; }
+.lab-hint { font-size:13px; line-height:1.65; color:#adc4ad; margin:12px 0 0; }
+.lab-controls { display:grid; gap:18px; }
+.lab-panel { border:1px solid #416448; border-radius:6px; padding:20px; background:#153528; }
+.golf-lab h2 { font:normal 16px monospace; margin:0 0 18px; }
+.lab-panel label { display:grid; gap:7px; font-size:13px; }
+.lab-fields { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
+.golf-lab :is(input:not([type="checkbox"]),select,textarea) { width:100%; min-width:0; border:1px solid #58705a; background:#102c21; color:#e3ecd9; font:14px monospace; border-radius:4px; padding:10px; }
+.golf-lab textarea { resize:vertical; line-height:1.5; }
+.golf-lab textarea::placeholder { color:#91a68f; }
+.lab-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+.lab-verdict { display:flex; gap:6px; }
+.golf-lab .lab-verdict button { flex:1; padding:9px 6px; font-size:12px; }
+.lab-tags { display:grid; grid-template-columns:1fr 1fr; gap:12px 8px; margin:20px 0; }
+.lab-panel .lab-tags label { display:flex; align-items:center; gap:6px; font-size:12px; }
+.lab-notices { color:#efca7e; font-size:14px; line-height:1.5; }
+.lab-copy { display:grid; gap:8px; margin-top:18px; }
+.lab-warning { color:#efca7e; font-size:13px; line-height:1.5; }
+.lab-saved { border-top:1px solid #416448; padding-top:26px; margin-top:34px; }
+.lab-saved-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.lab-saved-heading h2 { margin:0; }
+.lab-saved-heading h2 span { color:#a5c864; }
+.lab-saved-heading .lab-actions { margin:0; }
+.lab-review-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:20px; }
+.lab-review-list article { border:1px solid #416448; border-radius:5px; padding:16px; min-width:0; }
+.lab-review-list article>div:first-child { display:flex; justify-content:space-between; gap:12px; font-size:13px; margin-bottom:10px; }
+.lab-review-list strong { color:#c8de9f; font-weight:normal; }
+.lab-review-list p { font-size:14px; line-height:1.6; white-space:pre-wrap; overflow-wrap:anywhere; }
+.lab-review-list .lab-review-tags { color:#a4bca0; font-size:12px; }
+@media(min-width:1450px) { .lab-layout { grid-template-columns: minmax(0, 720px) 360px; } }
+@media(max-width:920px) { .lab-layout { grid-template-columns:minmax(0,1fr); } .lab-play { position:static; } .golf-lab .golf-frame { max-width:680px; margin-inline:auto; } .lab-controls { grid-template-columns:1fr 1fr; } }
+@media(max-width:620px) { .golf-lab { padding:20px 12px 32px; } .lab-controls, .lab-review-list { grid-template-columns:1fr; } .lab-saved-heading { align-items:flex-start; flex-direction:column; } .lab-header a { font-size:12px; } }
+
+.lab-comparison { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:14px; }
+.lab-comparison span { color:#adc4ad; font-size:12px; line-height:1.5; }

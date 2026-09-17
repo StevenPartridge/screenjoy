@@ -1,0 +1,57 @@
+{
+  "name": "screenjoy-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22.14.0"
+  },
+  "scripts": {
+    "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log node --env-file-if-exists=.env --env-file-if-exists=.env.local scripts/dev.mjs",
+    "build": "npm run build:packages && WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build",
+    "build:packages": "node scripts/release/build.mjs",
+    "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "test:built": "node --test tests/*.test.mjs",
+    "test:packages": "npm run build:packages && node --test tests/custom-element-api.test.mjs tests/downhill-ski-rendering.test.mjs tests/fishtank.test.mjs tests/game-of-life.test.mjs tests/pocket-golf-generation.test.mjs tests/pocket-golf-package.test.mjs tests/pocket-golf-play.test.mjs tests/pocket-golf.test.mjs tests/starliner.test.mjs tests/window-position.test.mjs",
+    "test:consumer": "node scripts/release/consumer.mjs",
+    "release:check": "node scripts/release/publish-check.mjs",
+    "release:export": "node scripts/release/export.mjs"
+  },
+  "dependencies": {
+    "@screenjoy/brick-maze": "0.1.0",
+    "@screenjoy/code-rain": "0.1.0",
+    "@screenjoy/downhill-ski": "0.1.0",
+    "@screenjoy/fishtank": "0.1.0",
+    "@screenjoy/fractal-generator": "0.1.0",
+    "@screenjoy/game-of-life": "0.1.0",
+    "@screenjoy/pipes": "0.1.0",
+    "@screenjoy/pocket-golf": "0.1.0",
+    "@screenjoy/starliner": "0.1.0",
+    "next": "16.3.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "1.54.11",
+    "@tailwindcss/postcss": "4.2.1",
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.2",
+    "@vitejs/plugin-rsc": "0.5.34",
+    "eslint": "9.39.4",
+    "eslint-config-next": "16.3.4",
+    "react-server-dom-webpack": "19.2.8",
+    "tailwindcss": "4.2.1",
+    "typescript": "5.9.3",
+    "vinext": "1.0.0-beta.9",
+    "vite": "8.2.2",
+    "wrangler": "4.133.0"
+  },
+  "type": "module"
+}

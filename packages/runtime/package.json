@@ -1,0 +1,42 @@
+{
+  "name": "@screenjoy/runtime",
+  "version": "0.1.0",
+  "description": "Tiny canvas lifecycle runtime shared by Screenjoy web components.",
+  "type": "module",
+  "files": [
+    "dist",
+    "src",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepack": "npm run build",
+    "prepublishOnly": "node ../../scripts/release/publish-check.mjs"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-component",
+    "custom-element",
+    "screenjoy",
+    "canvas"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StevenPartridge/screenjoy.git",
+    "directory": "packages/runtime"
+  },
+  "homepage": "https://github.com/StevenPartridge/screenjoy#readme",
+  "bugs": {
+    "url": "https://github.com/StevenPartridge/screenjoy/issues"
+  }
+}

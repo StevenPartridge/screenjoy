@@ -1,0 +1,51 @@
+{
+  "name": "@screenjoy/brick-maze",
+  "version": "0.1.0",
+  "description": "A tiny autonomous brick-maze screensaver web component.",
+  "type": "module",
+  "files": [
+    "dist",
+    "src",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "./dist/index.js"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./element": {
+      "types": "./dist/brick-maze.d.ts",
+      "import": "./dist/brick-maze.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepack": "npm run build",
+    "prepublishOnly": "node ../../scripts/release/publish-check.mjs"
+  },
+  "dependencies": {
+    "@screenjoy/runtime": "0.1.0"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-component",
+    "custom-element",
+    "screenjoy",
+    "canvas"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StevenPartridge/screenjoy.git",
+    "directory": "packages/brick-maze"
+  },
+  "homepage": "https://github.com/StevenPartridge/screenjoy#readme",
+  "bugs": {
+    "url": "https://github.com/StevenPartridge/screenjoy/issues"
+  }
+}
