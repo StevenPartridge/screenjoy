@@ -44,7 +44,7 @@ HTML is revalidated on each request. Hashed JavaScript, CSS, and models may be c
 
 - [x] Choose the hostname: `screenjoy.didish.art`.
 - [x] Authenticate Wrangler to the account containing `didish.art`.
-- [ ] Deploy and verify the configured custom domain.
+- [x] Deploy and verify the configured custom domain (September 17, 2026).
 - [ ] Try the deployed gallery on your real desktop and phone.
 
 References: [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/), [static HTML routing](https://developers.cloudflare.com/workers/static-assets/routing/static-site-generation/), [custom domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/), and [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/).
