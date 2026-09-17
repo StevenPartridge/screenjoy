@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import type { PocketGolfElement } from '@screenjoy/pocket-golf/element';
 import './prototype.css';
 
@@ -106,7 +105,7 @@ export function GolfPlayer() {
       {notice && <p role="status" className="golf-notice">{notice}</p>}
       {copyFallback && <input className="golf-copy-link" aria-label="Hole link to copy" value={copyFallback} readOnly onFocus={event => event.target.select()}/>}
       {error && <p role="alert" className="golf-notice">{error}</p>}
-      <Link className="golf-lab-link" href={address ? `/golf/lab?hole=${encodeURIComponent(address)}` : '/golf/lab'}>Open this hole in the lab</Link>
+      <a className="golf-lab-link" href={address ? `/golf/lab?hole=${encodeURIComponent(address)}` : '/golf/lab'}>Open this hole in the lab</a>
     </div>
   </section>;
 }

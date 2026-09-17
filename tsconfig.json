@@ -34,7 +34,10 @@
     "app/**/*.tsx",
     "vite.config.ts",
     "next.config.ts",
-    "build/**/*.ts"
+    "build/**/*.ts",
+    "site/**/*.ts",
+    "site/**/*.tsx",
+    "vite.site.config.ts"
   ],
   "exclude": [
     "node_modules",

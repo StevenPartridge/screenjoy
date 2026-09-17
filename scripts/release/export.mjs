@@ -6,7 +6,7 @@ import { root } from './packages.mjs';
 const output = resolve(root,'outputs/release');
 await mkdir(output,{recursive:true});
 const destination = await mkdtemp(join(output,'source-'));
-const allowed = ['app','packages','public','scripts','build','worker','tests','.github','docs','README.md','CONTRIBUTING.md','CHANGELOG.md','LICENSE','package.json','package-lock.json','tsconfig.json','tsconfig.package.json','vite.config.ts','next.config.ts','eslint.config.mjs','postcss.config.mjs','.node-version','.gitignore','release.config.example.json'];
+const allowed = ['site','vite.site.config.ts','wrangler.jsonc','app','packages','public','scripts','build','worker','tests','.github','docs','README.md','CONTRIBUTING.md','CHANGELOG.md','LICENSE','package.json','package-lock.json','tsconfig.json','tsconfig.package.json','vite.config.ts','next.config.ts','eslint.config.mjs','postcss.config.mjs','.node-version','.gitignore','release.config.example.json'];
 for (const entry of allowed) await cp(resolve(root,entry),resolve(destination,entry),{recursive:true,filter: source => !/(^|\/)(dist|node_modules|\.scratch|\.DS_Store|chatgpt-auth\.ts|agents)(\/|$)/.test(relative(root,source))});
 await mkdir(join(destination,'.openai'),{recursive:true});
 await writeFile(join(destination,'.openai/hosting.json'),JSON.stringify({d1:null,r2:null},null,2)+'\n');

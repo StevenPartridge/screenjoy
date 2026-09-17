@@ -474,9 +474,14 @@ export function ScreensaverDemo({ initialSaver = "life", initialFlight = { seed:
         </div>
         <div className="status-mark">
           <span className="status-dot" aria-hidden="true" />
-          <span>Nine independent packages · one active preview</span>
+          <a href="https://github.com/StevenPartridge/screenjoy">Source on GitHub ↗</a>
         </div>
       </header>
+
+      <div className="collection-intro">
+        <p>A little room for <em>joy.</em></p>
+        <span>Nine tiny worlds to watch, play with, and put on your website.</span>
+      </div>
 
       <nav className="collection-nav" aria-label="Collection">
         <label htmlFor="scene-chooser">Choose a Screenjoy</label>
@@ -484,10 +489,10 @@ export function ScreensaverDemo({ initialSaver = "life", initialFlight = { seed:
           {(Object.keys(SAVERS) as SaverName[]).map(name => <option key={name} value={name}>{SAVERS[name].windowTitle}</option>)}
         </select>
         <a href="#use-it">Use it</a>
-        <span className="release-status">Release preview</span>
+        <span className="release-status">v0.1.0 · MIT</span>
       </nav>
 
-      <section className="hero" aria-labelledby="hero-title">
+      <section id="demo" className="hero" aria-labelledby="hero-title">
         <div className="hero-copy">
           <p className="eyebrow">{saver.eyebrow}</p>
           <h1 id="hero-title">{saver.title}</h1>
@@ -810,6 +815,20 @@ export function ScreensaverDemo({ initialSaver = "life", initialFlight = { seed:
         {selected === "ski" && <span>Yeti at 2,000 m</span>}
       </div>
 
+      <section className="collection-section" aria-labelledby="collection-title">
+        <div className="collection-heading"><div><p className="eyebrow">The collection / 01—09</p><h2 id="collection-title">Find your little world.</h2></div><p>Some are for watching. Some are for one more go. Each is its own small, installable thing.</p></div>
+        <div className="scene-grid">
+          {(Object.keys(SAVERS) as SaverName[]).map((name, index) => <a key={name} className={`scene-card scene-card-${name}`} href={`/?saver=${name}#demo`} aria-current={selected === name ? 'true' : undefined} onClick={event => {
+            if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            event.preventDefault(); selectSaver(name); document.getElementById('demo')?.scrollIntoView();
+          }}>
+            <div className="scene-card-top"><span>{String(index + 1).padStart(2, '0')}</span><span aria-hidden="true">↗</span></div>
+            <h3>{SAVERS[name].windowTitle}</h3><p>{SAVERS[name].title}</p>
+            <span className="scene-card-kind">{name === 'golf' || name === 'ski' ? 'Play a little' : name === 'tank' ? 'Watch & feed' : 'Watch a while'}</span>
+          </a>)}
+        </div>
+      </section>
+
       <section id="use-it" className="code-section" aria-labelledby="code-title">
         <div className="code-layout">
           <div className="code-copy">
@@ -839,6 +858,7 @@ export function ScreensaverDemo({ initialSaver = "life", initialFlight = { seed:
               Import one package, then give its custom element a rectangle.
               Use a bundler such as Vite to resolve the package import.
             </p>
+            <p className="package-links"><a href={`https://www.npmjs.com/package/${saver.packageName}`}>Get it on npm ↗</a><a href="https://github.com/StevenPartridge/screenjoy/blob/main/docs/integration.md">Integration guide ↗</a></p>
             <div className="spec-list">
               <div>Independent npm package</div>
               <div>
@@ -884,9 +904,14 @@ export function ScreensaverDemo({ initialSaver = "life", initialFlight = { seed:
         </div>
       </section>
 
+      <section className="about-section" aria-labelledby="about-title">
+        <div><p className="eyebrow">Made to belong on your website</p><h2 id="about-title">A banner. A quiet corner.<br />A very short break.</h2><p>Give an article a window onto the stars, tuck an aquarium into a card, or let visitors play a hole of golf. You choose the rectangle; Screenjoy brings it to life.</p></div>
+        <div className="about-notes"><div><h3>Bring your own framework.</h3><p>Standard web components work with plain HTML, React, and Vue. Pick one scene and its shared runtime comes along.</p></div><div><h3>A good guest.</h3><p>Scenes resize with their container, respect reduced motion, and pause out of view. Golf and Ski keep their saved scores on your device.</p></div><div><h3>Yours to make things with.</h3><p>Open source under the MIT license, for personal projects and commercial work. No Screenjoy account, analytics, or subscription.</p></div></div>
+      </section>
+
       <footer className="site-footer">
-        <p>Screenjoy / Clean-room web experiments</p>
-        <p>More later. No mega-bundle required.</p>
+        <p>Screenjoy / Made by Steven Partridge / 2026</p>
+        <nav aria-label="Project"><a href="https://github.com/StevenPartridge/screenjoy">GitHub</a><a href="https://www.npmjs.com/org/screenjoy">npm</a><a href="https://github.com/StevenPartridge/screenjoy/blob/main/LICENSE">MIT license</a></nav>
       </footer>
     </main>
   );

@@ -20,7 +20,13 @@
     "test:packages": "npm run build:packages && node --test tests/custom-element-api.test.mjs tests/downhill-ski-rendering.test.mjs tests/fishtank.test.mjs tests/game-of-life.test.mjs tests/pocket-golf-generation.test.mjs tests/pocket-golf-package.test.mjs tests/pocket-golf-play.test.mjs tests/pocket-golf.test.mjs tests/starliner.test.mjs tests/window-position.test.mjs",
     "test:consumer": "node scripts/release/consumer.mjs",
     "release:check": "node scripts/release/publish-check.mjs",
-    "release:export": "node scripts/release/export.mjs"
+    "release:export": "node scripts/release/export.mjs",
+    "site:dev": "vite --config vite.site.config.ts --host 127.0.0.1 --port 3002",
+    "site:build": "npm run build:packages && node scripts/site/build.mjs",
+    "site:check": "node --test scripts/site/site.test.mjs",
+    "cloudflare:dev": "WRANGLER_LOG_PATH=.wrangler/logs wrangler dev --config wrangler.jsonc --local --ip 127.0.0.1 --port 8787",
+    "cloudflare:check": "WRANGLER_LOG_PATH=.wrangler/logs wrangler deploy --config wrangler.jsonc --dry-run",
+    "cloudflare:deploy": "WRANGLER_LOG_PATH=.wrangler/logs wrangler deploy --config wrangler.jsonc"
   },
   "dependencies": {
     "@screenjoy/brick-maze": "0.1.0",

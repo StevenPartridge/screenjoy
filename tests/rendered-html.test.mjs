@@ -129,6 +129,6 @@ test("every gallery selection has a stable server-rendered URL and usable window
     assert.match(html, /Choose a Screenjoy/);
     assert.match(html, /Reset position/);
     assert.match(html, /Adjust this scene/);
-    assert.match(html, /Release preview/);
+    assert.match(html, /v0.1.0 · MIT/);
   }
 });

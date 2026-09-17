@@ -20,4 +20,5 @@ jobs:
       - run: npm run typecheck
       - run: npm run test:built
       - run: npm run test:consumer -- --skip-build
+      - run: npm run cloudflare:check
       - run: npm run release:export

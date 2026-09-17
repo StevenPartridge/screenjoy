@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import type { Hole, HoleSettings, HoleReview, Verdict, PocketGolfElement } from '@screenjoy/pocket-golf/element';
 import '../prototype.css';
 import './lab.css';
@@ -100,7 +99,7 @@ export function GolfLab() {
     catch { setCopyFallback(text); setNotice('Select and copy the text below.'); }
   }
   function copyAll() {
-    if (api.current) void copy(reviews.map(review => api.current!.reviewText(review, window.location.origin)).join('\n\n---\n\n'), 'Feedback copied. Paste it into our conversation.');
+    if (api.current) void copy(reviews.map(review => api.current!.reviewText(review, window.location.origin)).join('\n\n---\n\n'), 'Feedback copied.');
   }
   function exportReviews() {
     const blob = new Blob([JSON.stringify({ format: 'screenjoy-golf-feedback-v1', reviews }, null, 2)], { type: 'application/json' });
@@ -114,7 +113,7 @@ export function GolfLab() {
   }
 
   return <main className="golf-page golf-lab">
-    <header className="lab-header"><div><Link href="/">screenjoy</Link><h1>Hole lab</h1></div><Link href="/golf">Play Pocket Golf</Link></header>
+    <header className="lab-header"><div><a href="/">screenjoy</a><h1>Hole lab</h1></div><a href="/golf">Play Pocket Golf</a></header>
     <div className="lab-layout">
       <section className="lab-play" aria-label="Play the generated hole">
         <div className="golf-frame saver-frame" ref={frame}>
@@ -146,7 +145,7 @@ export function GolfLab() {
           <div className="lab-tags">{tags.map(tag => <label key={tag}><input type="checkbox" checked={draft.tags.includes(tag)} onChange={event => editDraft({ ...draft, tags: event.target.checked ? [...draft.tags, tag] : draft.tags.filter(item => item !== tag) })}/>{tag}</label>)}</div>
           <label>Notes<textarea rows={4} maxLength={4000} placeholder="What worked? What would you change?" value={draft.note} onChange={event => editDraft({ ...draft, note: event.target.value })}/></label>
           <div className="lab-actions"><button type="button" disabled={!hole} onClick={() => saveReview(false)}>Save feedback</button><button type="button" className="lab-primary" disabled={!hole || hole.settings.index >= 999999} onClick={() => saveReview(true)}>Save & next →</button></div>
-          <p className="lab-hint">Saves the exact hole, your notes, and the current ball and last-shot details in this browser. Copy or export to share them with me.</p>
+          <p className="lab-hint">Saves the exact hole, your notes, and the current ball and last-shot details in this browser. Copy or export to share your feedback.</p>
         </section>
       </aside>
     </div>
@@ -155,7 +154,7 @@ export function GolfLab() {
     <section className="lab-saved" aria-labelledby="saved-title">
       <div className="lab-saved-heading"><h2 id="saved-title">Saved feedback <span>{reviews.length}</span></h2><div className="lab-actions"><button type="button" disabled={!reviews.length} onClick={copyAll}>Copy all feedback</button><button type="button" disabled={!reviews.length} onClick={exportReviews}>Export JSON</button></div></div>
       {!reviews.length ? <p className="lab-hint">Your saved notes will appear here. You can return to any reviewed hole.</p> :
-      <div className="lab-review-list">{reviews.map(review => <article key={review.id}><div><strong>{VERDICTS[review.verdict]}</strong><span>{review.summary.shape} · Par {review.summary.par}</span></div><code>{review.address}</code>{review.tags.length > 0 && <p className="lab-review-tags">{review.tags.join(' · ')}</p>}{review.note && <p>{review.note}</p>}<div className="lab-actions"><button type="button" onClick={() => { const parsed = api.current?.settingsFromAddress(review.address); if (parsed) { loadHole(parsed); if (api.current!.holeFingerprint(currentHole.current!) !== review.fingerprint) setNotice('This generator produced different geometry from the saved review. Include that mismatch in your feedback.'); } }}>Replay this hole</button><button type="button" onClick={() => api.current && void copy(api.current.reviewText(review, window.location.origin), 'Feedback copied. Paste it into our conversation.')}>Copy feedback</button></div></article>)}</div>}
+      <div className="lab-review-list">{reviews.map(review => <article key={review.id}><div><strong>{VERDICTS[review.verdict]}</strong><span>{review.summary.shape} · Par {review.summary.par}</span></div><code>{review.address}</code>{review.tags.length > 0 && <p className="lab-review-tags">{review.tags.join(' · ')}</p>}{review.note && <p>{review.note}</p>}<div className="lab-actions"><button type="button" onClick={() => { const parsed = api.current?.settingsFromAddress(review.address); if (parsed) { loadHole(parsed); if (api.current!.holeFingerprint(currentHole.current!) !== review.fingerprint) setNotice('This generator produced different geometry from the saved review. Include that mismatch in your feedback.'); } }}>Replay this hole</button><button type="button" onClick={() => api.current && void copy(api.current.reviewText(review, window.location.origin), 'Feedback copied.')}>Copy feedback</button></div></article>)}</div>}
     </section>
   </main>;
 }

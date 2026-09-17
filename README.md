@@ -2,7 +2,7 @@
 
 Small animated scenes and games for ordinary websites. Each Screenjoy is a
 TypeScript custom element with its own npm package and Shadow DOM. Install the
-one you want. The demo uses React and Vinext; the elements do not require React
+one you want. The static website uses React and Vite; the elements do not require React
 or Vue.
 
 [Source and issues](https://github.com/StevenPartridge/screenjoy) · [MIT license](LICENSE)
@@ -114,3 +114,11 @@ the hosting provider may still keep request logs. See [asset notes](docs/assets.
 
 This is a hobby project with no guaranteed support or release schedule.
 Contributions are welcome within the scope described in [CONTRIBUTING](CONTRIBUTING.md).
+
+## Public website on Cloudflare
+
+Visit [screenjoy.didish.art](https://screenjoy.didish.art).
+
+The marketing site reuses the live gallery and builds to static HTML and browser assets. Run `npm run cloudflare:check` to build and verify a deployment without publishing, then `npm run cloudflare:dev` to preview it locally. `npm run site:dev` provides the faster Vite development server.
+
+See [Cloudflare deployment](docs/cloudflare-deployment.md) for account setup, the custom domain, deployment commands, and owner deliverables. The npm release and original Vinext preview remain independent.
